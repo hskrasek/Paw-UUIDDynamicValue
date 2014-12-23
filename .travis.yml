@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- '0.10'
+before_install:
+- npm install coffee-script
+before_script:
+- ./node_modules/.bin/cake archive
+script:
+- ./node_modules/.bin/cake test
+deploy:
+  provider: releases
+  api_key:
+    secure: HKzdmfWrrncjT0jXfgsboHC9dT5d1kYccJoS7LmxToHMSMKESL92uS1UZ3ucWvkMnz9GSV/688oKIakOE8hfoOKYkjQYesoeJvgsgLfw+rALjnHvDK3Ysoy2NF68o/ya21Km3qZaInnFAorRU5r3Czp/WB/gqyH8P8yZslXk17o=
+  file: build/RandomUuidValue.zip
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
+    repo: hskrasek/Paw-UUIDDynamicValue
